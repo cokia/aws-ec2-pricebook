@@ -1,6 +1,6 @@
 define(
-    ['jquery', 'backbone', 'router', 'views/spotview', 'views/regionview', 'views/tableview', 'model'],
-    function ($, Backbone, router, SpotView, RegionView, InstanceTableView, model) {
+    ['jquery', 'backbone', 'router','views/tableview', 'model'],
+    function ($, Backbone, router, InstanceTableView, model) {
         "use strict";
         var AppView;
 
@@ -19,9 +19,7 @@ define(
 
                 this.$container = this.$("#mainContent");
                 this.views = {
-                    "spots": new SpotView(this.collection),
                     "instances": new InstanceTableView(this.collection),
-                    "regions": new RegionView(this.collection)
                 };
                 this.curView = null;
 
@@ -66,10 +64,10 @@ define(
             },
             bindNav: function () {
                 this.navList = this.$("#mainNav").find("ul");
-                this.navList.find("a").on("click", function () {
-                    router.navigate($(this).attr("href"), {"trigger": true});
-                    return false;
-                });
+                // this.navList.find("a").on("click", function () {
+                //     router.navigate($(this).attr("href"), {"trigger": true});
+                //     return false;
+                // });
                 this.listenTo(this, "renderView", function (viewType){
                     this.activateNav(viewType);
                 });

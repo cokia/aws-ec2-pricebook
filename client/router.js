@@ -10,13 +10,11 @@ define(['backbone'], function (Backbone){
      */
     AWSRouter = Backbone.Router.extend({
         routes: {
-            "spot_spreads(/)(:type)": "spots",
             "instances(/)(:instance)": "instances",
-            "regions(/)(:region)": "regions",
             "": "home"
         },
         home: function () {
-            this.navigate("spot_spreads", {"trigger": true});
+            this.navigate("instances", {"trigger": true});
         }
     });
     router = new AWSRouter();
